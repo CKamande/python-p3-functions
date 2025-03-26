@@ -21,13 +21,15 @@ class TestGreetProgrammer:
 class TestGreet:
     '''function greet()'''
 
-    def test_greet_programmer(self):
-        '''prints "Hello, {name}!"'''
-        captured_out = io.StringIO()
-        sys.stdout = captured_out
-        greet("Guido")
+def test_greet_programmer():
+    '''prints "Hello, programmer!"'''
+    captured_out = io.StringIO()
+    sys.stdout = captured_out
+    try:
+        greet_programmer()
+    finally:
         sys.stdout = sys.__stdout__
-        assert(captured_out.getvalue() == "Hello, Guido!\n")
+    assert captured_out.getvalue() == "Hello, programmer!\n"
 
 class TestGreetWithDefault:
     '''function greet_with_default()'''
